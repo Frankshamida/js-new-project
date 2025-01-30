@@ -1,13 +1,13 @@
-//Array to store todos
+// Array to store todos
 let todos = [];
 
-//DOM Elements
-const todoForm = document.getElementById('todo-form')
-const todoInput = document.getElementById('todo-input')
-const todoList = document.getElementById('todo-list')
+// DOM Elements
+const todoForm = document.getElementById('todo-form');
+const todoInput = document.getElementById('todo-input');
+const todoList = document.getElementById('todo-list');
 
 function renderTodos() {
-    todoList.innerHTML = ''; //Clear the List
+    todoList.innerHTML = ''; // Clear the List
     todos.forEach((todo, index) => {
         const li = document.createElement('li');
         li.className = 'todo-item';
@@ -22,15 +22,15 @@ function renderTodos() {
 
 function addTodo(event) {
     event.preventDefault(); // Prevent form submission
-    const newTodo = todoInput.ariaValueMax.trim();
-    if(newTodo) {
+    const newTodo = todoInput.value.trim(); 
+    if (newTodo) {
         todos.push(newTodo);
-        todoInput.value = ''; //Clear the input
+        todoInput.value = ''; // Clear the input
         renderTodos();
     }
 }
 
-//Function to edit a todo
+// Function to edit a todo
 function editTodo(index) {
     const updatedTodo = prompt('Edit your todo:', todos[index]);
     if (updatedTodo !== null) {
@@ -39,7 +39,7 @@ function editTodo(index) {
     }
 }
 
-//Function to delete a todo
+// Function to delete a todo
 function deleteTodo(index) {
     if (confirm('Are you sure you want to delete this todo?')) {
         todos.splice(index, 1);
@@ -47,8 +47,8 @@ function deleteTodo(index) {
     }
 }
 
-//Event Listeners
-todoForm.addEventListeners('submit', addTodo);
+// Event Listeners
+todoForm.addEventListener('submit', addTodo);
 
-//Initial render
+// Initial render
 renderTodos();
